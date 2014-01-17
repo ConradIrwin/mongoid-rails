@@ -22,7 +22,7 @@ module MongoidRails
     def should_permit?(criteria)
       if criteria.respond_to?(:permitted?)
         return criteria.permitted?
-      elsif criteria.respond_to?(:each)
+      elsif Hash === criteria || Array === criteria
         criteria.each do |criterion|
           return false unless should_permit?(criterion)
         end

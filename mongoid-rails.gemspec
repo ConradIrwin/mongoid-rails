@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = "mongoid-rails"
-  s.version     = "3.0.0"
+  s.version     = "3.0.1"
   s.author      = "Conrad Irwin"
   s.email       = "conrad.irwin@gmail.com"
   s.homepage    = "https://github.com/ConradIrwin/mongoid-rails"
