@@ -1,4 +1,4 @@
-mongoid-rails is the safest way to use Mongoid with Rails.
+mongoid-rails is the safest way to use MongoDB with Rails.
 
 
 Installation
@@ -7,7 +7,7 @@ Installation
 Add mongoid-rails to your Gemfile.
 
 ```ruby
-gem 'mongoid-rails
+gem 'mongoid-rails'
 ```
 
 Then run `bundle install`.
