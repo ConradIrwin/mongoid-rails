@@ -1,5 +1,4 @@
-mongoid-rails is the safest way to use MongoDB with Rails.
-
+mongoid-rails is the safest way to use MongoDB with Rails 3 or 4.
 
 Installation
 ------------
@@ -12,23 +11,23 @@ gem 'mongoid-rails'
 
 Then run `bundle install`.
 
+What does it do?
+----------------
 
-Usage
------
-
-You don't need to use `mongoid-rails` explicitly, instead it adds protection against a few known hash injection attacks automatically.
+Mongoid rails provides protection against [hash-injection
+attacks](http://cirw.in/blog/hash-injection) in mongoid.
 
 ### Forbidden attributes protection
 
-This causes things like `User.create(params[:user])` to raise an exception. If
+This causes things like `User.create(setings: params[:settings])` to raise an exception. If
 you want to create a user from parameters, you need to explicitly permit the
 fields that you want to allow.
 
 ```ruby
-User.create(params[:user].permit(:name, :email))
+User.create(settings: params[:settings].permit(:favorite_color))
 ```
 
-This prevents an attacker from sneakily setting `params[:user][:admin] = true` or similar.
+This prevents an attacker from sneakily setting `params[:settings][:admin] = true` or similar.
 
 ### Forbidden query protection
 
@@ -38,14 +37,11 @@ This protects you against query injection attacks. It makes the following code s
 User.where(api_token: params[:api_token])
 ```
 
-Without `mongoid-rails` an attacker can send `?api_token[$regex]=.*` to guess
-api tokens from your app. With `mongoid-rails` that will cause an exception to
-be raised.
+Without `mongoid-rails` an attacker can send `?api_token[$gt]=` to guess api
+tokens from your app. With `mongoid-rails` that will cause an exception to be
+raised.
 
 Meta
 ----
 
 `mongoid-rails` is released under the MIT license. See `LICENCE.MIT` for details.
-
-It currently only supports rails3 with the strong parameters gem installed. I'd
-love a patch to make it work with the mongoid4 beta releases.
