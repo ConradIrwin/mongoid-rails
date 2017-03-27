@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.summary     = "Strong parameter integration between rails and mongoid"
   s.license     = "MIT"
 
-  s.add_dependency("mongoid", ["~> 5.0"])
+  s.add_dependency("mongoid", [">= 4.0", "< 7"])
 
   s.files        = `git ls-files`.split("\n")
   s.require_path = 'lib'
